@@ -52,6 +52,9 @@ expected worst-case time complexity is O(N);
 expected worst-case space complexity is O(N), beyond input storage (not counting the 
 storage required for input arguments).
 
+Results (100%): 
+https://app.codility.com/demo/results/training3K6RVS-PJ7/
+
  */
 
 #include <iostream>
@@ -60,6 +63,7 @@ storage required for input arguments).
 
 int solution( std::vector< int > &A )
 {
+	// assumes result is either a 2-slice or a 3-slice
 	const auto N = A.size();
 	if ( N < 2 ) {
 		return -1;

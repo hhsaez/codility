@@ -64,7 +64,7 @@ int solution( std::vector< int > &A )
 		}
 		else {
 			count += mult;
-			if ( count >= 1000000000 ) {
+			if ( count > 1000000000 ) {
 				return -1;
 			}
 		}
