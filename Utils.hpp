@@ -15,14 +15,20 @@ namespace codility {
 		ss << N;
 		return ss.str();
 	}
-	
-	std::string toString( std::vector< int > &A )
+
+	std::string toString( bool b )
+	{
+		return ( b ? "T" : "F" );
+	}
+
+	template< typename T >
+	std::string toString( std::vector< T > &A )
 	{
 		std::stringstream ss;
 		ss << "[";
 		bool first = true;
 		for ( auto v : A ) {
-			ss << ( first ? "" : ", " ) << v;
+			ss << ( first ? "" : ", " ) << toString( v );
 			first = false;
 		}
 		ss << "]";

@@ -47,14 +47,12 @@ https://app.codility.com/demo/results/trainingMSME4J-ERJ/
 
  */
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <random>
+#include "../../Utils.hpp"
 
-int solution( std::vector< int > &A )
+int solution( std::vector< int > A )
 {
 	const auto N = A.size();
+	std::cout << N << " ";
 	if ( N < 3 ) {
 		return 0;
 	}
@@ -75,9 +73,10 @@ int solution( std::vector< int > &A )
 	return 0;
 }
 
-int brute( std::vector< int > &A )
+int brute( std::vector< int > A )
 {
 	const auto N = A.size();
+	std::cout << N << " ";
 	for ( size_t p = 0; p < N; p++ ) {
 		for ( size_t q = p + 1; q < N; q++ ) {
 			for ( size_t r = q + 1; r < N; r++ ) {
@@ -98,39 +97,13 @@ int brute( std::vector< int > &A )
 
 void test( std::vector< int > A )
 {
-
-	std::cout << "Input A=[";
-	bool first = true;
-	for ( auto a : A ) {
-		std::cout << ( first ? "" : ", " ) << a;
-		first = false;
-	}
-	std::cout << "]\n";
-
-	auto got = solution( A );
-	auto expected = brute( A );
-
-	if ( got != expected ) {
-		std::cout << "ERROR: got=" << got << ", expected=" << expected << "\n";
-	}
-	else {
-		std::cout << "OK\n";
-	}
+	codility::compareResults( solution( A ), brute( A ) );
 }
 
 std::vector< int > generateRandomVector( size_t size )
 {
-	std::random_device rd;
-    std::mt19937 gen( rd() );
-	std::uniform_int_distribution<> dis( std::numeric_limits< int >::min(), std::numeric_limits< int >::max() );
-
-	std::vector< int > v1( size );
-	for ( size_t i = 0; i < size; i++ ) {
-		v1[ i ] = dis( gen );
-	}
-
-	return v1;
-}	
+	return codility::generateRandomVector( std::numeric_limits< int >::min(), std::numeric_limits< int >::max(), size );
+}
 
 int main( int argc, char **argv )
 {
