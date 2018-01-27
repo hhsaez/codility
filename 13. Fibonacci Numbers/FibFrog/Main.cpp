@@ -185,6 +185,8 @@ int main( int argc, char **argv )
 	test( { 1, 1, 1, 1, 1, 1, 1 } );
 	test( { 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0 } );
 
+	test( std::vector< int >( 100000, 1 ) );
+	
 	return 0;
 }
 
